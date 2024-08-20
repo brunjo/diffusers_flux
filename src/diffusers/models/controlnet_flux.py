@@ -281,7 +281,8 @@ class FluxControlNetModel(ModelMixin, ConfigMixin, PeftAdapterMixin):
 
         if self.union:
             # union mode
-            assert controlnet_mode is not None, 'using union-controlnet, but controlnet_mode is None'
+            if controlnet_mode is None:
+                raise ValueError("`controlnet_mode` cannot be`None` when using union-controlnet")
 
             # union mode emb
             controlnet_mode_emb = self.controlnet_mode_embedder(controlnet_mode)
