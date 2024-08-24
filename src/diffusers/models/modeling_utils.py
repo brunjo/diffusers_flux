@@ -780,7 +780,6 @@ class ModelMixin(torch.nn.Module, PushToHubMixin):
                             offload_state_dict=offload_state_dict,
                             dtype=torch_dtype,
                             force_hooks=force_hook,
-                            strict=True,
                         )
                     except AttributeError as e:
                         # When using accelerate loading, we do not have the ability to load the state
@@ -810,7 +809,6 @@ class ModelMixin(torch.nn.Module, PushToHubMixin):
                                 offload_state_dict=offload_state_dict,
                                 dtype=torch_dtype,
                                 force_hooks=force_hook,
-                                strict=True,
                             )
                             model._undo_temp_convert_self_to_deprecated_attention_blocks()
                         else:
